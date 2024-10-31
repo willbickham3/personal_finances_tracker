@@ -10,10 +10,12 @@ const getAllIncomeByUserId = async (user_id) => {
 
 // Adds an income to the database
 const addIncome = async (user_id, amount, source, date) => {
-    const result = await pool.query('INSERT INTO income (user_id, amount, source, date VALUES ($1, $2, $3, $4) RETURNING *',
-                                   [user_id, amount, source, date]);
-    return result.rows[0]
-}
+    const result = await pool.query(
+        'INSERT INTO income (user_id, amount, source, date) VALUES ($1, $2, $3, $4) RETURNING *',
+        [user_id, amount, source, date]
+    );
+    return result.rows[0];
+};
 
 // Updates an income in the database
 const updateIncome = async (user_id, id, amount, source, date) => {
