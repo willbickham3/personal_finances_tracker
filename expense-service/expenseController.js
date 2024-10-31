@@ -1,9 +1,9 @@
 const expenseModel = require('./expenseModel')
 
 exports.getAllExpenses = async (req, res) => {
-    const { userId } = req.params;
+    const { user_id } = req.params;
     try {
-        const expenses = await expenseModel.getAllExpensesByUserId(userId)
+        const expenses = await expenseModel.getAllExpensesByUserId(user_id)
         res.json(expenses);
     } catch (err) {
         console.error('Error fetching expense data:', err);

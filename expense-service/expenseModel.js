@@ -4,9 +4,13 @@ const pool = require('./db')
 
 // Returns all the expenses from the database
 const getAllExpensesByUserId = async (user_id) => {
-    const result = await pool.query('SELECT * FROM expenses WHERE user_id = $1', [user_id]);
+    const result = await pool.query(
+        'SELECT * FROM expenses WHERE user_id = $1',
+        [user_id]
+    );
     return result.rows;
-}
+};
+
 
 // Adds an expense to the database
 const addExpense = async (user_id, amount, category, date) => {
