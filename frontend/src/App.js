@@ -1,9 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import LoginPage from './components/loginPage/loginPage';
 
 function App() {
   return (
-    <loginPage/>
+    <LoginPage />
   );
 }
 
