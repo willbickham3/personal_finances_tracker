@@ -4,6 +4,7 @@ const pool = require('./db')
 
 // Returns all the incomes from the database
 const getAllIncomeByUserId = async (user_id) => {
+    console.log(`Fetching incomes for user_id: ${user_id}`);
     const result = await pool.query('SELECT * FROM income WHERE user_id = $1', [user_id]);
     return result.rows;
 }
