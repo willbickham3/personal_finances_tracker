@@ -1,9 +1,11 @@
 const incomeModel = require('./incomeModel')
 
 exports.getAllIncome = async (req, res) => {
-    const { userId } = req.params;
+    const { user_id } = req.params;
     try {
-        const incomes = await incomeModel.getAllIncomeByUserId(userId)
+        const incomes = await incomeModel.getAllIncomeByUserId(user_id)
+        console.log(`Fetching incomes for user_id: ${user_id}`);
+        console.log(incomes)
         res.json(incomes);
     } catch (err) {
         console.error('Error fetching income data:', err);
