@@ -1,11 +1,14 @@
 .container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: auto;
     margin-top: 3%;
     background: #ffffff;
     padding-bottom: 3%;
     font-size: 8px;
+    width: 60%;
+    border-radius: 3px;
 }
 .header {
     display: flex;
@@ -45,13 +48,13 @@
     background: #eaeaea;
     border-radius: 6px;
     gap: 3px;
-    width: 30%;
+    width: 50%;
     padding: 1%;
 }
 
 .input > input {
     height: 0.1em;
-    width: 10em;
+    width: 13em;
 }
 
 img {
@@ -65,6 +68,7 @@ img {
     background-color: #eaeaea; /* Matches the background for a seamless look */
     /* border-radius: 4px;        Matches your rounded corners */
     font-size: 0.6em;            /*Adjust font size as needed */
+    width: 90%;
 }
 
 .input input:focus {
@@ -72,4 +76,39 @@ img {
     border: 1px solid #5A20CB; /*Optional: Add a custom border on focus */
     box-shadow: none;         /* Removes any extra shadow if applied */
     border-radius: 6px;
+}
+
+.forgot-password {
+    color: #a0a0a0;
+    font-weight: 600;
+    font-size: 4px;
+    margin-top: 2%;
+}
+
+span {
+    color: #3c009d;
+    font-weight: 500;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 3%;
+}
+
+.submit-container > * {
+    background: #5A20CB;
+    color: #eaeaea;
+    font-weight: 500;
+    border-radius: 8px;
+    font-size: 0.7em;
+    padding: 2%;
+    width: 6em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.gray {
+    background-color: #a0a0a0;
 }
