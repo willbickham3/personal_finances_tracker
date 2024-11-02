@@ -1,8 +1,13 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors')
+
 const userRoutes = require('./userRoutes'); // Import user routes
 
 const app = express();
+
+app.use(cors())
+
 app.use(express.json()); // Middleware to parse JSON
 
 // Register the user routes under /api/users
