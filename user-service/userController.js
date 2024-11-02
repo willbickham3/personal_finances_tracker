@@ -24,7 +24,7 @@ exports.createUser = async (req, res) => {
 }
 
 exports.userLogin = async (req, res) => {
-    const { loginPassword, email } = req.body;
+    const { email, password: loginPassword } = req.body;
     try {
         const result = await pool.query('SELECT user_id, password FROM users WHERE email = $1', [email]);
 
