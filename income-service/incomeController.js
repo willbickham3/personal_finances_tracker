@@ -1,8 +1,9 @@
 const incomeModel = require('./incomeModel')
 
 exports.getAllIncome = async (req, res) => {
-    const { user_id } = req.params;
+    const user_id = req.params.user_id;
     try {
+        console.log(user_id)
         const incomes = await incomeModel.getAllIncomeByUserId(user_id)
         console.log(`Fetching incomes for user_id: ${user_id}`);
         console.log(incomes)
