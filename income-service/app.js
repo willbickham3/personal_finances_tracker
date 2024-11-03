@@ -1,8 +1,11 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors')
 const incomeRoutes = require('./incomeRoutes'); // Import the income routes
 
 const app = express();
+
+app.use(cors())
 
 // Middleware to parse JSON bodies
 app.use(express.json());
