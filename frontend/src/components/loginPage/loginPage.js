@@ -1,4 +1,5 @@
 import { React, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './LoginPage.css'
 import user_icon from '../Assets/user_icon.svg'
@@ -12,6 +13,7 @@ const LoginPage = () => {
     const [ name, setName ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
+    const navigate = useNavigate()
 
 
     const handleLoginClick = async () => {
@@ -32,6 +34,7 @@ const LoginPage = () => {
                 
                 if (response.ok) {
                   console.log("Login Successful!");
+                  navigate('/home')
                 //   sessionStorage.setItem('authToken', data.token)
                   // Handle success, such as redirecting to a login page or showing a success message
                 } else {
