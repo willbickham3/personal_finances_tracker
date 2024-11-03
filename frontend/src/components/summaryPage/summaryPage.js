@@ -18,9 +18,17 @@ const SummaryPage = () => {
               Budgets
             </Link></div>
       </div>
+      <GetUserId/>
     </nav>
         </>
     )
+}
+
+const GetUserId = () => {
+  const user_id = sessionStorage.getItem('user_id')
+  return (
+    <div>{user_id}</div>
+  )
 }
 
 export default SummaryPage
