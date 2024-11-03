@@ -37,7 +37,7 @@ exports.userLogin = async (req, res) => {
         if (isMatch) {
             // generate token
             const token = jwt.sign({ user_id }, key, { expiresIn: '1d'})
-            res.json({ message: 'Login Successful', token });
+            res.json({ message: 'Login Successful', token, user_id });
         }
         else {
             return res.status(401).json({ error: 'Incorrect email or password' });
