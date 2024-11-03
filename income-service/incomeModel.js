@@ -1,4 +1,5 @@
 const pool = require('./db')
+// const jwt = require('jsonwebtoken')
 
 // CRUD Operations
 
