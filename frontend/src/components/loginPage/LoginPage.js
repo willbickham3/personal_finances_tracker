@@ -34,6 +34,8 @@ const LoginPage = () => {
                 
                 if (response.ok) {
                   console.log("Login Successful!");
+                  console.log(data.user_id)
+                  sessionStorage.setItem('user_id', data.user_id)
                   navigate('/home')
                 //   sessionStorage.setItem('authToken', data.token)
                   // Handle success, such as redirecting to a login page or showing a success message
