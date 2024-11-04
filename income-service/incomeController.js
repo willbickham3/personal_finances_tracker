@@ -26,10 +26,10 @@ exports.addIncome = async (req, res) => {
 };
 
 exports.updateIncome = async (req, res) => {
-    const { id } = req.params;
-    const { user_id, amount, source, date } = req.body;
+    console.log("Updating...")
+    const { id, user_id, amount, source, date } = req.body;
     try {
-        const updatedIncome = await incomeModel.updateIncome(user_id, id, amount, source, date)
+        const updatedIncome = await incomeModel.updateIncome(id, user_id, amount, source, date)
         if (updatedIncome) {
             res.json(updatedIncome)
         }
