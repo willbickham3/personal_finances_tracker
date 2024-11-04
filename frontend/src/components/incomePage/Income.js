@@ -15,6 +15,7 @@ const IncomePage = () => {
     const [ amount,   setAmount ]   = useState('')
     const [ category, setCategory ] = useState('')
     const [ date,     setDate ]     = useState('')
+    const [ itemId, setItemId ] = useState('')
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -78,10 +79,10 @@ const IncomePage = () => {
     
             if (response.ok) {
                 console.log('success')
-                // setIncomeSource('');
-                // setIncomeAmount('');
+                setCategory('');
+                setAmount('');
                 getIncome(); // Refresh the income list after adding
-                // setIsModalOpen(false); // Close the modal
+                setIsModalOpen(false); // Close the modal
             } else {
                 console.error('Failed to add income');
             }
@@ -90,17 +91,50 @@ const IncomePage = () => {
         }
     }
 
-    const modalContent = () => {}
+    const editIncome = async (amount, source, date) => {
+        const user_id = sessionStorage.getItem('user_id')
+        const updatedIncome = {
+            id: itemId,
+            user_id: user_id, 
+            amount: parseFloat(amount), // Ensure amount is a number
+            source: source,
+            date: date // Format date as needed
+            }
+            console.log("being sent:", itemId, user_id, amount, source, date)
+        try {
+            const response = await fetch(`http://localhost:5001/api/income`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                },
+                body: JSON.stringify(updatedIncome),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to fetch incomes');
+            }
+    
+            const data = await response.json();
+            console.log('Fetched incomes:', data); // Log the fetched data
+            getIncome(); // Update the state with the fetched incomes
+        } catch (error) {
+            console.error('Error fetching incomes:', error); // Handle errors appropriately
+        }
+    }
 
-    const prefillModal = async (amount, source, date) => {
+    const prefillModal = async (amount, source, date, id) => {
         setAmount(amount)
         setCategory(source)
+        setItemId(id)
         setDate(new Date(date).toISOString().split('T')[0])
         setIsModalOpen(true)
         setEditing(true)
     }
 
     const deleteIncome = async (user_id, id) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this income?")
+
+        if (!confirmDelete) {return}
         try {
             const response = await fetch(`http://localhost:5001/api/income/${user_id}/${id}`, {
                 method: 'DELETE',
@@ -119,9 +153,19 @@ const IncomePage = () => {
         }
     }
 
+    const handleSubmit = async (amount, category, date) => {
+        
+        if (isEditing) {
+            console.log("Editing")
+            await editIncome(amount, category, date)
+            setEditing(false)
+        }
+        else {await addIncome(amount, category, date)}
+    }
+
     const totalIncome = incomes.reduce((accumulator, income) => {
-        return accumulator + Number(income.amount); // Ensure amount is a number
-    }, 0); // Start at 0
+        return accumulator + Number(income.amount); 
+    }, 0);
 
     return (
         <>
@@ -147,7 +191,7 @@ const IncomePage = () => {
                                 <td>{new Date(income.date).toLocaleDateString()}</td>
                                 <td>
                                     <div className='action-container'>
-                                        <button className='edit' onClick={() => prefillModal(income.amount, income.source, income.date)}>Edit</button>
+                                        <button className='edit' onClick={() => prefillModal(income.amount, income.source, income.date, income.id)}>Edit</button>
                                         <button className='delete' onClick={() => deleteIncome(income.user_id, income.id)}>Delete</button>
                                     </div>
                                 </td>
@@ -165,7 +209,7 @@ const IncomePage = () => {
                     <div className='inputs'>
                         <div className='input'>
                             <img src={dollar_icon} alt='' />
-                            <input type='text' placeholder='Amount' value={amount} onChange={(e) => setAmount(e.target.value)}/>
+                            <input type='number' placeholder='Amount' step={0.01} min={0} value={amount} onChange={(e) => setAmount(e.target.value)}/>
                         </div>
                         <div className='input'>
                             <img src={category_icon} alt='' />
@@ -180,7 +224,7 @@ const IncomePage = () => {
                         {/* <div className='edit'><img src={edit_icon} alt='' /></div>
                         <div className='delete'><img src={delete_icon} alt=''/></div> */}
                     </div>
-                    <button className='submit' onClick={() => {addIncome(amount, category, date)
+                    <button className='submit' onClick={() => {handleSubmit(amount, category, date)
                         closeModal()
                     }}>Submit</button>
                 </PopupModal>
