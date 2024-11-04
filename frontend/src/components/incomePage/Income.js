@@ -1,5 +1,6 @@
 import { React, useState, useEffect} from 'react';
 import './Income.css'
+import NavBar from '../utils/NavBar';
 
 import PopupModal from '../utils/Modal'
 
@@ -169,6 +170,7 @@ const IncomePage = () => {
 
     return (
         <>
+        <NavBar />
         <div className='container'>
             <div className='header'>
                     <div className='text'>Income</div>
