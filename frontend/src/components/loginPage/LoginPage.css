@@ -33,27 +33,27 @@
     border-radius: 9px;
 }
 
-.inputs {
+.login-inputs {
     display: flex;
     flex-direction: column;
     gap: 6px;
     margin-top: 3%;
 }
 
-.input {
+.login-input {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
     background: #eaeaea;
     border-radius: 6px;
-    gap: 3px;
+    gap: 2em;
     width: 50%;
     padding: 1%;
 }
 
-.input > input {
-    height: 0.1em;
+.login-input > input {
+    height: 1.5em;
     width: 13em;
 }
 
@@ -61,17 +61,16 @@ img {
     width: 10%;
 }
 
-.input input {
+.login-input input {
     border: none;            /* Removes the default border */
     outline: none;            /* Removes the focus outline */
     padding: 4px;            /* Adjust padding for comfort */
     background-color: #eaeaea; /* Matches the background for a seamless look */
     /* border-radius: 4px;        Matches your rounded corners */
-    font-size: 0.6em;            /*Adjust font size as needed */
-    width: 90%;
+    width: 80%;
 }
 
-.input input:focus {
+.login-input input:focus {
     outline: none;            /* Ensures no border on focus */
     border: 1px solid #5A20CB; /*Optional: Add a custom border on focus */
     box-shadow: none;         /* Removes any extra shadow if applied */
@@ -81,7 +80,7 @@ img {
 .forgot-password {
     color: #a0a0a0;
     font-weight: 600;
-    font-size: 4px;
+    font-size: 3em;
     margin-top: 2%;
 }
 
@@ -93,8 +92,9 @@ span {
 .submit-container {
     display: flex;
     justify-content: center;
-    gap: 8px;
     margin-top: 3%;
+    font-size: 6em;
+    gap: 1em;
 }
 
 .submit-container > * {
