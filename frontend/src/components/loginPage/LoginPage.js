@@ -9,7 +9,7 @@ import password_icon from '../Assets/password_icon.svg'
 
 const LoginPage = () => {
 
-    const [ page, setPage ] = useState("Sign Up");
+    const [ page, setPage ] = useState("Login");
     const [ name, setName ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
@@ -49,6 +49,7 @@ const LoginPage = () => {
               }
             console.log(name, email, password)
         } else {
+            document.querySelector('#name').style.display = 'none';
             setPage("Login")}
     }
 
@@ -81,6 +82,7 @@ const LoginPage = () => {
               }
             console.log(name, email, password)
         } else {
+            document.querySelector('#name').style.display = 'flex';
             setPage("Sign Up")}
     }
 
@@ -90,16 +92,16 @@ const LoginPage = () => {
                 <div className='text'>Sign Up</div>
                 <div className='underline'></div>
             </div>
-            <div className='inputs'>
-                <div className='input'>
+            <div className='login-inputs'>
+                <div className='login-input' id='name' style={{display:'none'}}>
                     <img src={user_icon} alt='' />
                     <input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}/>
                 </div>
-                <div className='input'>
+                <div className='login-input'>
                     <img src={email_icon} alt='' />
                     <input type='email' placeholder='Email Address' value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
-                <div className='input'>
+                <div className='login-input'>
                     <img src={password_icon} alt='' />
                     <input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
