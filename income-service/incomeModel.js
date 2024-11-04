@@ -6,7 +6,7 @@ const pool = require('./db')
 // Returns all the incomes from the database
 const getAllIncomeByUserId = async (user_id) => {
     console.log(`Fetching incomes for user_id: ${user_id}`);
-    const result = await pool.query('SELECT * FROM income WHERE user_id = $1', [user_id]);
+    const result = await pool.query('SELECT * FROM income WHERE user_id = $1 ORDER BY date DESC', [user_id]);
     return result.rows;
 }
 
@@ -20,10 +20,13 @@ const addIncome = async (user_id, amount, source, date) => {
 };
 
 // Updates an income in the database
-const updateIncome = async (user_id, id, amount, source, date) => {
+const updateIncome = async (id, user_id, amount, source, date) => {
+    console.log(id, user_id, amount, source, date)
+    console.log('here')
     const result = await pool.query(
-        'UPDATE income SET amount = $1, source = $2, date = $3 WHERE id = $4 AND user_id = $5 RETURNING *',
-        [amount, source, date, id, user_id]);
+        'UPDATE income SET amount = $3, source = $4, date = $5 WHERE id = $1 AND user_id = $2 RETURNING *',
+        [id, user_id, amount, source, date]);
+    console.log(result.rows[0])
     return result.rows[0];
 }
 
