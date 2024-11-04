@@ -71,12 +71,12 @@ img {
 }
 
 .input input {
-    border: none;            /* Removes the default border */
-    outline: none;            /* Removes the focus outline */
-    padding: 1em;            /* Adjust padding for comfort */
-    background-color: #eaeaea; /* Matches the background for a seamless look */
-    /* border-radius: 4px;        Matches your rounded corners */
-    font-size: 3em;            /*Adjust font size as needed */
+    border: none;                   /* Removes the default border */
+    outline: none;                  /* Removes the focus outline */
+    padding: 1em;                   /* Adjust padding for comfort */
+    background-color: #eaeaea;    /* Matches the background for a seamless look */
+    /* border-radius: 4px;             Matches your rounded corners */
+    font-size: 3em;                 /*Adjust font size as needed */
     width: 90%;
 }
 
