@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PopupModal = ({ isOpen, onClose, title, children }) => {
+const PopupModal = ({ isOpen, onClose, title }) => {
     if (!isOpen) return null;
 
     return (
@@ -8,7 +8,6 @@ const PopupModal = ({ isOpen, onClose, title, children }) => {
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <h2>{title}</h2>
                 <button className="close-button" onClick={onClose}>X</button>
-                {children}
             </div>
         </div>
     );
