@@ -1,8 +1,11 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors')
 const expenseRoutes = require('./expenseRoutes'); // Import the expense routes
 
 const app = express();
+
+app.use(cors())
 
 // Middleware to parse JSON bodies
 app.use(express.json());
