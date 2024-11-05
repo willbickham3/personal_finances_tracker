@@ -19,15 +19,21 @@ const NavBar = () => {
         <nav className="navbar">
       <div className="navbar-container">
         <div className='nav-item logo'>Personal Finances Tracker</div>
-        <div className='nav-item'><Link to="/income" className="nav-link">
-              Incomes
-            </Link></div>
-        <div className='nav-item'><Link to="/expenses" className="nav-link">
-              Expenses
-            </Link></div>
-        <div className='nav-item'><Link to="/budgets" className="nav-link">
-              Budgets
-            </Link></div>
+            <div className='nav-item'><Link to="/home" className="nav-link">
+                  Summary
+                </Link></div>
+            <div className='nav-item'><Link to="/income" className="nav-link">
+                  Incomes
+                </Link></div>
+            <div className='nav-item'><Link to="/expenses" className="nav-link">
+                  Expenses
+                </Link></div>
+            <div className='nav-item'><Link to="/budgets" className="nav-link">
+                  Budgets
+                </Link></div>
+            <div className='nav-item'><Link to="/help" className="nav-link">
+              Help
+            </Link></div>  
             <div className="nav-item" id="profile">
           <img src={profile_icon} alt="profile svg" onClick={Logout}/>
         </div>
