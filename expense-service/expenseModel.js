@@ -4,20 +4,21 @@ const pool = require('./db')
 
 // Returns all the expenses from the database
 const getAllExpensesByUserId = async (user_id) => {
-    const result = await pool.query(
-        'SELECT * FROM expenses WHERE user_id = $1',
-        [user_id]
-    );
+    console.log(`Fetching expenses for user_id: ${user_id}`);
+    const result = await pool.query('SELECT * FROM expenses WHERE user_id = $1 ORDER BY date DESC', [user_id]);
     return result.rows;
 };
 
 
 // Adds an expense to the database
 const addExpense = async (user_id, amount, category, date) => {
-    const result = await pool.query('INSERT INTO expenses (user_id, amount, category, date) VALUES ($1, $2, $3, $4) RETURNING *',
-                                   [user_id, amount, category, date]
-                                );
-    return result.rows[0]
+    console.log('we here')
+    console.log(user_id, amount, category, date)
+    const result = await pool.query(
+        'INSERT INTO expenses (user_id, amount, category, date) VALUES ($1, $2, $3, $4) RETURNING *',
+        [user_id, amount, category, date]
+    );
+    return result.rows[0];
 }
 
 // Updates an expense in the database
