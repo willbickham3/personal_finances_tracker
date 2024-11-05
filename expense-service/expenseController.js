@@ -23,10 +23,10 @@ exports.addExpense = async (req, res) => {
 };
 
 exports.updateExpense = async (req, res) => {
-    const { id } = req.params;
-    const { user_id, amount, category, date } = req.body;
+    const { id, user_id, amount, category, date } = req.body;
+    console.log('being sent: ',id, user_id, amount, category, date)
     try {
-        const updatedexpense = await expenseModel.updateExpense(user_id, id, amount, category, date)
+        const updatedexpense = await expenseModel.updateExpense(id, user_id, amount, category, date)
         if (updatedexpense) {
             res.json(updatedexpense)
         }
