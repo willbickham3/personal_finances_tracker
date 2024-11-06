@@ -215,7 +215,15 @@ const IncomePage = () => {
                         </div>
                         <div className='input'>
                             <img src={category_icon} alt='' />
-                            <input type='text' placeholder='Source' value={category} onChange={(e) => setCategory(e.target.value)}/>
+                            <input type='text' placeholder='Source' pattern="[A-Za-z0-9]*$" value={category} onChange={(e) => {
+                                if (/^[A-Za-z0-9]*$/.test(e.target.value)) {
+                                    console.log('')
+                                    setCategory(e.target.value)
+                                } else {
+                                    window.alert('Please enter letters only.');
+                                    return
+                                }
+                                }}/>
                         </div>
                         <div className='input'>
                             {/* <img src={calendar_icon} alt='' /> */}
