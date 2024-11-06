@@ -22,7 +22,7 @@ const addExpense = async (user_id, amount, category, date) => {
 }
 
 // Updates an expense in the database
-const updateExpense = async (user_id, id, amount, category, date) => {
+const updateExpense = async (id, user_id, amount, category, date) => {
     const result = await pool.query(
         'UPDATE expenses SET amount = $1, category = $2, date = $3 WHERE id = $4 AND user_id = $5 RETURNING *',
         [amount, category, date, id, user_id]);
