@@ -6,6 +6,7 @@ import SummaryPage  from './components/summaryPage/summaryPage'
 import IncomePage   from './components/incomePage/Income'
 import ExpensePage  from './components/expensesPage/Expenses'
 import BudgetsPage  from './components/budgetsPage/Budgets'
+import HelpPage from './components/helpPage/Help.js'
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         <Route path="/income"   element={<IncomePage />}/>
         <Route path="/expenses" element={<ExpensePage />}/>
         <Route path="/budgets"  element={<BudgetsPage />}/>
-        {/* <Route path="/help"     element={<HelpPage />}/> */}
+        <Route path="/help"     element={<HelpPage />}/>
       </Routes>
     </Router>
   );
