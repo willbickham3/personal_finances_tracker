@@ -80,8 +80,20 @@ img {
 .forgot-password {
     color: #a0a0a0;
     font-weight: 600;
-    font-size: 3em;
+    font-size: 2.5em;
     margin-top: 2%;
+}
+
+.welcome-msg {
+    color: #a0a0a0;
+    font-weight: 600;
+    font-size: 2em;
+    margin-top: 2%;
+    width: 50%;
+}
+
+.bold {
+    font-weight: 700;
 }
 
 span {
