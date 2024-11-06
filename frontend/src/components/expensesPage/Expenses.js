@@ -52,6 +52,9 @@ const ExpensePage = () => {
 
     const addExpense = async (amount, category, date) => {
         console.log(amount, category, date)
+        if (category === ''){
+            return window.alert('Please check the inputs and ensure you fill out every one.')
+        }
         try {
             const user_id = sessionStorage.getItem('user_id')
             const newexpense = {
