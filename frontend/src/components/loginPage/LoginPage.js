@@ -71,6 +71,7 @@ const LoginPage = () => {
                 
                 if (response.ok) {
                   console.log("User created successfully:", data);
+                  navigate('/help')
                   // Handle success, such as redirecting to a login page or showing a success message
                 } else {
                   console.error("Failed to create user:", data);
@@ -111,6 +112,7 @@ const LoginPage = () => {
                 <div className={page==="Login"?"submit gray":"submit"} onClick={handleSignUpClick}>Sign Up</div>
                 <div className={page==="Sign Up"?"submit gray":"submit"} onClick={handleLoginClick}>Login</div>
             </div>
+            <div className='welcome-msg'><span>Simplify</span> your finances by tracking your income and expenses! Create budgets to make sure you <span>stay on track</span>. Start tracking with the Personal Finance Tracker <span className='bold'>TODAY!</span></div>
         </div>
     )
 }
