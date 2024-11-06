@@ -39,3 +39,25 @@
 #profile img {
     cursor: pointer;
 }
+
+.summary-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    background-color: gray;
+    align-content: center;
+}
+
+.totalIncome, .totalExpenses, .totalBudgets {
+    font-size: 3em;
+}
+
+td {
+    background: white;
+}
+
+
+.totalBudgets {
+    text-decoration: underline;
+}
