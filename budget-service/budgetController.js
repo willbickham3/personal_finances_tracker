@@ -13,6 +13,7 @@ exports.getAllBudgets = async (req, res) => {
 
 exports.addBudget = async (req, res) => {
     const { user_id, current_amount, amount, category, date } = req.body;
+    console.log(user_id, current_amount, amount, category, date)
     try {
         const newBudget = await budgetModel.addBudget(user_id, current_amount, amount, category, date)
         res.status(201).json(newBudget);
@@ -23,8 +24,8 @@ exports.addBudget = async (req, res) => {
 };
 
 exports.updateBudget = async (req, res) => {
-    const { id } = req.params;
-    const { user_id, current_amount, amount, category, date } = req.body;
+    const { id, user_id, current_amount, amount, category, date } = req.body;
+    console.log(id, user_id, current_amount, amount, category, date)
     try {
         const updatedBudget = await budgetModel.updateBudget(user_id, id, current_amount, amount, category, date)
         if (updatedBudget) {
