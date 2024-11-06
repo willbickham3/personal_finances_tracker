@@ -5,7 +5,7 @@ const budgetController = require('./budgetController');
 // Retrieve all the expenses for a user
 router.get('/:user_id', budgetController.getAllBudgets);
 router.post('/', budgetController.addBudget)
-router.put('/:id', budgetController.updateBudget)
+router.put('/', budgetController.updateBudget)
 router.delete('/:user_id/:id', budgetController.deleteBudget)
 
 module.exports = router
