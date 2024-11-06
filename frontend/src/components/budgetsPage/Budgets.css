@@ -1,0 +1,167 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    margin-top: 3%;
+    background: #ffffff;
+    padding-bottom: 3%;
+    font-size: 8px;
+    width: 60%;
+    border-radius: 3px;
+}
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.text {
+    color: #3c009d;
+    font-size: 5em;
+    font-weight: 700;
+}
+
+.underline {
+    margin-top: 0;
+    width: 6%;
+    height: 2px;
+    background: #3c009d;
+    border-radius: 9px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    margin-top: 3%;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background: #eaeaea;
+    border-radius: 6px;
+    gap: 3px;
+    width: 50%;
+    padding: 1%;
+}
+
+.input > input {
+    height: 0.1em;
+    width: 13em;
+}
+
+img {
+    width: 10%;
+}
+
+.modal-overlay {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.modal-overlay button {
+    font-size: 3em;
+}
+
+.input input {
+    border: none;                   /* Removes the default border */
+    outline: none;                  /* Removes the focus outline */
+    padding: 1em;                   /* Adjust padding for comfort */
+    background-color: #eaeaea;    /* Matches the background for a seamless look */
+    /* border-radius: 4px;             Matches your rounded corners */
+    font-size: 3em;                 /*Adjust font size as needed */
+    width: 90%;
+}
+
+.input input:focus {
+    outline: none;            /* Ensures no border on focus */
+    border: 1px solid #5A20CB; /*Optional: Add a custom border on focus */
+    box-shadow: none;         /* Removes any extra shadow if applied */
+    border-radius: 6px;
+}
+
+span {
+    color: #3c009d;
+    font-weight: 500;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 3%;
+}
+
+.submit-container > * {
+    background: #5A20CB;
+    color: #eaeaea;
+    font-weight: 500;
+    border-radius: 8px;
+    font-size: 0.7em;
+    padding: 2%;
+    width: 6em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.gray {
+    background-color: #a0a0a0;
+}
+
+.budget-item {
+    list-style-type: none;
+    text-decoration: none;
+    font-size: 3em;
+    font-weight: 500;
+}
+
+.budget-table {
+    width: 95%; /* Make the table take the full width */
+    border-collapse: collapse; /* Collapse borders */
+    margin-top: 20px; /* Space above the table */
+    font-size: 2.5em;
+}
+
+.budget-table th,
+.budget-table td {
+    border: 1px solid #ccc; /* Add borders */
+    padding: 8px; /* Add padding */
+    text-align: left; /* Align text to the left */
+}
+
+/* Set specific widths for columns */
+.budget-table th:nth-child(1), /* Amount column */
+.budget-table td:nth-child(1) {
+    width: 20%; /* Adjust width as needed */
+}
+
+.budget-table th:nth-child(2), /* Source column */
+.budget-table td:nth-child(2) {
+    width: 30%; /* Adjust width as needed */
+}
+
+.budget-table th:nth-child(3), /* Date column */
+.budget-table td:nth-child(3) {
+    width: 25%; /* Adjust width as needed */
+}
+
+.budget-table th:nth-child(4), /* Actions column */
+.budget-table td:nth-child(4) {
+    width: 25%; /* Adjust width as needed */
+}
+
+.budget-table th {
+    background-color: #f4f4f4; /* Light background for header */
+}
+
+.budget-table td button {
+    margin-right: 5px; /* Space between buttons */
+}
+
