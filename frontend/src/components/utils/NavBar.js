@@ -10,6 +10,7 @@ const NavBar = () => {
       if (!logoutConfirmation) {return}
       console.log(sessionStorage.getItem('authToken'))
       sessionStorage.removeItem('authToken')
+      sessionStorage.removeItem('user_id')
       console.log(sessionStorage.getItem('authToken'))
       navigate('/')
     
