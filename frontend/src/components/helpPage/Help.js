@@ -1,6 +1,8 @@
 import React from "react";
 import NavBar from "../utils/NavBar";
 
+import './Help.css'
+
 const HelpPage = () => {
     return (
         <>
