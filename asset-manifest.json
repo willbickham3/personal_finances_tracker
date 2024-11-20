@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/personal_finances_tracker/static/css/main.8275834a.css",
-    "main.js": "/personal_finances_tracker/static/js/main.5f1367c8.js",
+    "main.js": "/personal_finances_tracker/static/js/main.61a24a21.js",
     "static/js/453.9ec70434.chunk.js": "/personal_finances_tracker/static/js/453.9ec70434.chunk.js",
     "static/media/dollar_icon.svg": "/personal_finances_tracker/static/media/dollar_icon.5608c6c0d2b92025895d7a974f422b07.svg",
     "static/media/edit_icon.svg": "/personal_finances_tracker/static/media/edit_icon.1425484a77c0b9baaa4d2301d31e81b1.svg",
@@ -13,11 +13,11 @@
     "static/media/user_icon.svg": "/personal_finances_tracker/static/media/user_icon.1f7adea39c6b7ce7fb953f7ba4f98385.svg",
     "index.html": "/personal_finances_tracker/index.html",
     "main.8275834a.css.map": "/personal_finances_tracker/static/css/main.8275834a.css.map",
-    "main.5f1367c8.js.map": "/personal_finances_tracker/static/js/main.5f1367c8.js.map",
+    "main.61a24a21.js.map": "/personal_finances_tracker/static/js/main.61a24a21.js.map",
     "453.9ec70434.chunk.js.map": "/personal_finances_tracker/static/js/453.9ec70434.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8275834a.css",
-    "static/js/main.5f1367c8.js"
+    "static/js/main.61a24a21.js"
   ]
 }
