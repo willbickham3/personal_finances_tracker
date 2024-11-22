@@ -11,7 +11,7 @@ import HelpPage from './components/helpPage/Help.js'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/personal_finances_tracker">
       <Routes>
         <Route path="/"         element={<LoginPage />}/>
         <Route path="/home"     element={<SummaryPage />}/>
