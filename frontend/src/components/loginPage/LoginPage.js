@@ -19,7 +19,7 @@ const LoginPage = () => {
     const handleLoginClick = async () => {
         if (page ==="Login") {
             try {
-                const response = await fetch('https://personal-finances-tracker.onrender.com/login', {
+                const response = await fetch('https://personal-finances-tracker.onrender.com/api/users/login', {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const LoginPage = () => {
     const handleSignUpClick = async () => {
         if (page ==="Sign Up") {
             try {
-                const response = await fetch('https://personal-finances-tracker.onrender.com/users', {
+                const response = await fetch('https://personal-finances-tracker.onrender.com/api/users', {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',

@@ -43,7 +43,7 @@ const IncomePage = () => {
         const user_id = sessionStorage.getItem('user_id')
         console.log(user_id)
         try {
-            const response = await fetch(`http://localhost:5001/api/income/${user_id}`, {
+            const response = await fetch(`https://personal-finances-tracker.onrender.com/api/income/${user_id}`, {
                 method: 'GET', 
             });
     
@@ -69,7 +69,7 @@ const IncomePage = () => {
                 source: source,
                 date: date // Format date as needed
             };
-            const response = await fetch('http://localhost:5001/api/income', {
+            const response = await fetch('https://personal-finances-tracker.onrender.com/api/income', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ const IncomePage = () => {
             }
             console.log("being sent:", itemId, user_id, amount, source, date)
         try {
-            const response = await fetch(`http://localhost:5001/api/income`, {
+            const response = await fetch(`https://personal-finances-tracker.onrender.com/api/income`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json', // Specify the content type
@@ -137,7 +137,7 @@ const IncomePage = () => {
 
         if (!confirmDelete) {return}
         try {
-            const response = await fetch(`http://localhost:5001/api/income/${user_id}/${id}`, {
+            const response = await fetch(`https://personal-finances-tracker.onrender.com/api/income/${user_id}/${id}`, {
                 method: 'DELETE',
                 // headers: {
                 //     'Authorization': `Bearer ${sessionStorage.getItem('authToken')}`,
