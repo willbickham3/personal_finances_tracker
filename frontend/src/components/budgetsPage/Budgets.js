@@ -33,7 +33,7 @@ const BudgetPage = () => {
         const user_id = sessionStorage.getItem('user_id')
         console.log(user_id)
         try {
-            const response = await fetch(`https://personal-finances-tracker.onrender.com/api/budgets/${user_id}`, {
+            const response = await fetch(`https://pft-budget-service.onrender.com/api/budgets/${user_id}`, {
                 method: 'GET', 
             });
     
@@ -60,7 +60,7 @@ const BudgetPage = () => {
                 category: category,
                 date: date // Format date as needed
             };
-            const response = await fetch('https://personal-finances-tracker.onrender.com/api/budgets/', {
+            const response = await fetch('https://pft-budget-service.onrender.com/api/budgets/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ const BudgetPage = () => {
             }
             console.log("being sent:", itemId, user_id, currentAmount, amount, category, date)
         try {
-            const response = await fetch('https://personal-finances-tracker.onrender.com/api/budgets/', {
+            const response = await fetch('https://pft-budget-service.onrender.com/api/budgets/', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json', // Specify the content type
@@ -131,7 +131,7 @@ const BudgetPage = () => {
 
         if (!confirmDelete) {return}
         try {
-            const response = await fetch(`https://personal-finances-tracker.onrender.com/api/budgets/${user_id}/${id}`, {
+            const response = await fetch(`https://pft-budget-service.onrender.com/api/budgets/${user_id}/${id}`, {
                 method: 'DELETE',
                 // headers: {
                 //     'Authorization': `Bearer ${sessionStorage.getItem('authToken')}`,
