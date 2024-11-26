@@ -14,13 +14,20 @@ const SummaryPage = () => {
       const user_id = sessionStorage.getItem('user_id')
       const fetchData = async () => {
           try {
-              const incomesResponse  = await fetch(`http://localhost:5001/api/income/${user_id}`); // Replace with your incomes API endpoint
-              const expensesResponse = await fetch(`http://localhost:5002/api/expenses/${user_id}`); // Replace with your expenses API endpoint
-              const budgetsResponse  = await fetch(`http://localhost:5003/api/budgets/${user_id}`); // Replace with your budgets API endpoint
+              const incomesResponse  = await fetch(`https://personal-finances-tracker-1.onrender.com/api/income/${user_id}`); // Replace with your incomes API endpoint
+              const expensesResponse = await fetch(`https://pft-expenses-service.onrender.com/api/expenses/${user_id}`); // Replace with your expenses API endpoint
+              const budgetsResponse  = await fetch(`https://pft-budget-service.onrender.com/api/budgets/${user_id}`); // Replace with your budgets API endpoint
 
               const incomesData  = await incomesResponse.json();
               const expensesData = await expensesResponse.json();
               const budgetsData  = await budgetsResponse.json();
+
+              incomesData.forEach(entry => {
+                console.log(entry)
+                entry['type'] = 'income'
+              });
+
+              console.log(incomesData)
 
               setIncomes(incomesData);
               setExpenses(expensesData);
@@ -48,7 +55,7 @@ const SummaryPage = () => {
       }, 0);
       totalBudgets = budgets.map((budget) => (
         <tr key={budget.id}>
-            <td>${Number(budget.current_amount)}</td>
+            <td>${Number(budget.current_amount).toFixed(2)}</td>
             <td>${Number(budget.amount).toFixed(2)}</td>
             <td>{budget.category}</td>
         </tr>
@@ -76,8 +83,8 @@ const SummaryPage = () => {
           <table className="budget-table">
                     <thead>
                         <tr>
-                            <th>Amount</th>
                             <th>Current Amount</th>
+                            <th>Amount</th>
                             <th>Category</th>
                         </tr>
                     </thead>
