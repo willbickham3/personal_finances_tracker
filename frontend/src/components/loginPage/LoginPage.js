@@ -55,6 +55,20 @@ const LoginPage = () => {
 
     const handleSignUpClick = async () => {
         if (page ==="Sign Up") {
+            const response = await fetch('http://localhost:5005/validate-email', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                email: email
+              }),
+            });
+            const validation = await response.json()
+            if (!validation.valid) {
+              console.log("Email not valid!");
+              return
+            }
             try {
                 const response = await fetch('https://personal-finances-tracker.onrender.com/api/users', {
                   method: 'POST',
