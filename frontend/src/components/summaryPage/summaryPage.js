@@ -4,6 +4,7 @@ import './summaryPage.css'
 import NavBar from '../utils/NavBar';
 import dollar_icon from '../Assets/dollar_icon.svg'
 import category_icon from '../Assets/category_icon.svg'
+import { card } from '../utils/Card';
 
 const SummaryPage = () => {
     const [incomes, setIncomes] = useState([])
@@ -32,16 +33,13 @@ const SummaryPage = () => {
               setIncomes(incomesData);
               setExpenses(expensesData);
               setBudgets(budgetsData);
-              console.log(incomes)
-              console.log(expenses)
-              console.log(budgets)
           } catch (error) {
               console.error('Error fetching data:', error);
           }
       };
 
-      fetchData(); // Call the function to fetch data
-  }, []); // Empty dependency array means this runs once on mount
+      fetchData();
+  }, []);
 
     let totalIncome;
     let totalExpenses
@@ -55,8 +53,8 @@ const SummaryPage = () => {
       }, 0);
       totalBudgets = budgets.map((budget) => (
         <tr key={budget.id}>
-            <td>${Number(budget.current_amount).toFixed(2)}</td>
-            <td>${Number(budget.amount).toFixed(2)}</td>
+            <td>${Number(budget.current_amount).toFixed(2)} / ${Number(budget.amount).toFixed(2)}</td>
+            {/* <td>${Number(budget.amount).toFixed(2)}</td> */}
             <td>{budget.category}</td>
         </tr>
       ))
@@ -71,6 +69,36 @@ const SummaryPage = () => {
       <td></td>
       </tr>
     }
+
+    const currentProgress = (budget) => {
+      let newProgressBarContainer = document.createElement('div')
+      newProgressBarContainer.setAttribute('class', 'progress-bar')
+
+      let newProgressBar = document.createElement('div')
+      newProgressBar.setAttribute('id', `progress-${budget.id}`)
+
+      let progress = ((Number(budget.current_amount) / Number(budget.amount)) * 100).toFixed(2)
+      newProgressBar.style.width = `${progress}%`
+      newProgressBar.style.height = '100%'
+      newProgressBar.style.borderRadius = '10px'
+      newProgressBar.style.transition = 'width 0.3s ease'
+      newProgressBar.style.backgroundColor = '#4caf50'
+      newProgressBarContainer.append(newProgressBar)
+      return newProgressBarContainer
+
+      //     height: '100%',
+            //     backgroundColor: '#4caf50',
+            //     borderRadius: '10px',
+            //     transition: 'width 0.3s ease'
+    }
+
+    const budgetCards = (budget) => {
+      let newCard = card(budget.category, budget.current_amount, budget.amount)
+      let progress = currentProgress(budget)
+      newCard.append(progress)
+
+      return newCard
+    }
     
 
     return (
@@ -79,14 +107,27 @@ const SummaryPage = () => {
         <div className='summary-container'>
           <div className='totalIncome'>Total Income: ${totalIncome.toFixed(2)}</div>
           <div className='totalExpenses'>Total Expenses: ${totalExpenses.toFixed(2)}</div>
-          <div className='totalBudgets'>Budgets Table</div>
-          <table className="budget-table">
+          <button onClick={() => {(budgetCards(budgets[0]))}}></button>
+          {budgets.map((budget) => (
+            document.querySelector('.summary-container').append(budgetCards(budget))
+            // <div key={budget.id} className='progress-bar'>
+            //   <div id={`progress`} style={{
+            //     width: `${((Number(budget.current_amount) / Number(budget.amount)) * 100).toFixed(2)}%`,
+            //     height: '100%',
+            //     backgroundColor: '#4caf50',
+            //     borderRadius: '10px',
+            //     transition: 'width 0.3s ease'
+            //   }}></div>
+            // </div>
+          ))}
+          <table className="budget-summary">
                     <thead>
+                    <th className='summaryHead' colSpan="2">Budgets</th>
                         <tr>
-                            <th>Current Amount</th>
-                            <th>Amount</th>
+                            <th>Status</th>
                             <th>Category</th>
                         </tr>
+                        
                     </thead>
                     <tbody>
                       {totalBudgets}
