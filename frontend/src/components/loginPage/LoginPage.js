@@ -73,7 +73,7 @@ const LoginPage = () => {
 
     const handleSignUpClick = async () => {
         if (page ==="Sign Up") {
-            const response = await fetch('https://b-emailvalidation.onrender.com', {
+            const response = await fetch('https://b-emailvalidation.onrender.com/validate-email', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
