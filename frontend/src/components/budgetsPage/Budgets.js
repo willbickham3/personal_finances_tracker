@@ -6,6 +6,7 @@ import PopupModal from '../utils/Modal';
 import './Budgets.css'
 import dollar_icon from '../Assets/dollar_icon.svg'
 import category_icon from '../Assets/category_icon.svg'
+import checkNotification from '../utils/notification';
 
 const BudgetPage = () => {
     const [ budgets, setBudgets ]               = useState([])
@@ -90,16 +91,16 @@ const BudgetPage = () => {
             id: itemId,
             user_id: user_id,
             current_amount: currentAmount, 
-            amount: parseFloat(amount), // Ensure amount is a number
+            amount: parseFloat(amount),
             category: category,
-            date: date // Format date as needed
+            date: date
             }
             console.log("being sent:", itemId, user_id, currentAmount, amount, category, date)
         try {
             const response = await fetch('https://pft-budget-service.onrender.com/api/budgets/', {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json', // Specify the content type
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(updatedexpense),
             });
@@ -109,10 +110,10 @@ const BudgetPage = () => {
             }
     
             const data = await response.json();
-            console.log('Fetched expenses:', data); // Log the fetched data
-            getBudgets(); // Update the state with the fetched expenses
+            console.log('Fetched expenses:', data);
+            getBudgets(); 
         } catch (error) {
-            console.error('Error fetching expenses:', error); // Handle errors appropriately
+            console.error('Error fetching expenses:', error);
         }
     }
 
@@ -149,13 +150,19 @@ const BudgetPage = () => {
     }
 
     const handleSubmit = async (currentAmount, amount, category, date) => {
-        
+        console.log(currentAmount, amount)
+        if (Number(currentAmount) > Number(amount)) {
+            if (checkNotification('budget')) {
+                window.alert(`Caution: Overspent ${category} budget by $${currentAmount - amount}!`)
+            }
+        }
         if (isEditing) {
             console.log("Editing")
             await editBudget(currentAmount, amount, category, date)
             setEditing(false)
         }
-        else {await addBudget(currentAmount, amount, category, date)}
+        else {
+            await addBudget(currentAmount, amount, category, date)}
     }
 
     return (
@@ -169,8 +176,8 @@ const BudgetPage = () => {
                 <table className="budget-table">
                     <thead>
                         <tr>
-                            <th>Amount</th>
-                            <th>Current Amount</th>
+                            <th>Amount Spent</th>
+                            <th>Limit</th>
                             <th>Category</th>
                             <th>Date</th>
                             <th>Actions</th>
@@ -179,7 +186,7 @@ const BudgetPage = () => {
                     <tbody>
                         {budgets.map((budget) => (
                             <tr key={budget.id}>
-                                <td>${Number(budget.current_amount)}</td>
+                                <td>${Number(budget.current_amount).toFixed(2)}</td>
                                 <td>${Number(budget.amount).toFixed(2)}</td>
                                 <td>{budget.category}</td>
                                 <td>{new Date(budget.date).toLocaleDateString()}</td>
