@@ -9,7 +9,7 @@ import password_icon from '../Assets/password_icon.svg'
 
 const LoginPage = () => {
 
-    const [ page, setPage ] = useState("Login");
+    const [ page, setPage ] = useState("Sign Up");
     const [ name, setName ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
