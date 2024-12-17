@@ -1,0 +1,14 @@
+.reports-container button {
+    font-size: 2em;
+    border-radius: 9px;
+    padding: 0.3em;
+    font-weight: 600;
+}
+
+.reports-container {
+    display: flex;
+    height: 100%;
+    gap: 2em;
+    margin-top: 20px;
+    justify-content: center;
+}
