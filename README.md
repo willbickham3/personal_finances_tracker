@@ -19,7 +19,3 @@ A personal finance tracker application that allows users to manage their income,
 - **Backend**: Node.js, Express.js
 - **Database**: PostgreSQL
 - **Hosting**: Render
-
-## Installation
-
-TBD
