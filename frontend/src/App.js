@@ -7,6 +7,7 @@ import IncomePage   from './components/incomePage/Income'
 import ExpensePage  from './components/expensesPage/Expenses'
 import BudgetsPage  from './components/budgetsPage/Budgets'
 import HelpPage from './components/helpPage/Help.js'
+import ReportsPage from './components/reportsPage/ReportsPage.js';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/income"   element={<IncomePage />}/>
         <Route path="/expenses" element={<ExpensePage />}/>
         <Route path="/budgets"  element={<BudgetsPage />}/>
+        <Route path="/reports"  element={<ReportsPage />}/>
         <Route path="/help"     element={<HelpPage />}/>
       </Routes>
     </Router>
