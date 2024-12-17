@@ -15,7 +15,28 @@ const LoginPage = () => {
     const [ password, setPassword ] = useState("");
     const navigate = useNavigate()
 
-
+    const wakeUp = async () => {
+      let urls = [
+        'https://personal-finances-tracker.onrender.com',
+        'https://personal-finances-tracker-1.onrender.com',
+        'https://pft-expenses-service.onrender.com',
+        'https://pft-budget-service.onrender.com',
+      ]
+      try {
+        const responses = await Promise.all(
+          urls.map(url =>
+            fetch(url)
+              .then(res => console.log(`${url} - Status: ${res.status}`))
+              .catch(err => console.error(`${url} - Error: ${err.message}`))
+          )
+        );
+        console.log('All servers have been pinged!');
+      } catch (error) {
+        console.error('Error waking up servers:', error);
+      
+    };
+    }
+    
     const handleLoginClick = async () => {
         if (page ==="Login") {
             try {
@@ -37,15 +58,12 @@ const LoginPage = () => {
                   console.log(data.user_id)
                   sessionStorage.setItem('user_id', data.user_id)
                   navigate('/home')
-                //   sessionStorage.setItem('authToken', data.token)
-                  // Handle success, such as redirecting to a login page or showing a success message
+                  wakeUp()
                 } else {
-                  console.error("Wrong Email or Password!", data);
-                  // Handle error, such as displaying an error message to the user
+                  window.alert("Wrong Email or Password!", data);
                 }
               } catch (error) {
                 console.error("Error Logging In", error);
-                // Handle network errors
               }
             console.log(name, email, password)
         } else {
@@ -64,11 +82,14 @@ const LoginPage = () => {
                 email: email
               }),
             });
+            console.log(email)
             const validation = await response.json()
+            console.log(validation)
             if (!validation.valid) {
               console.log("Email not valid!");
               return
             }
+            
             try {
                 const response = await fetch('https://personal-finances-tracker.onrender.com/api/users', {
                   method: 'POST',
@@ -86,14 +107,12 @@ const LoginPage = () => {
                 if (response.ok) {
                   console.log("User created successfully:", data);
                   navigate('/help')
-                  // Handle success, such as redirecting to a login page or showing a success message
+                  wakeUp()
                 } else {
                   console.error("Failed to create user:", data);
-                  // Handle error, such as displaying an error message to the user
                 }
               } catch (error) {
                 console.error("Error creating user:", error);
-                // Handle network errors
               }
             console.log(name, email, password)
         } else {
@@ -104,7 +123,7 @@ const LoginPage = () => {
     return (
         <div className='container'>
             <div className='header'>
-                <div className='text'>Sign Up</div>
+                <div className='text'>{page}</div>
                 <div className='underline'></div>
             </div>
             <div className='login-inputs'>
