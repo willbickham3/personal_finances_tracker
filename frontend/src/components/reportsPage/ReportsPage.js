@@ -38,12 +38,7 @@ const ReportsPage = () => {
 
         const link = document.createElement('a');
     link.href = blobURL;
-    link.download = 'report.pdf'; // Set the desired file name
-
-    // Append the link to the DOM, trigger click, and remove it
-    // document.body.appendChild(link);
-    // link.click();
-    // link.remove();
+    link.download = 'report.pdf';
     }
 
     return (
