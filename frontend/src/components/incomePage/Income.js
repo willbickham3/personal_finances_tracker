@@ -26,18 +26,9 @@ const IncomePage = () => {
         setIsModalOpen(false);
     }
 
-    const handleModal = () => {
-        if (isEditing) {
-            // editIncome()
-        }
-        else {
-            addIncome(amount, category, date)
-        }
-    }
-
     useEffect(() => {
-        getIncome(); // Fetch incomes when the component mounts
-    }, []); // Empty dependency array means this runs once on mount
+        getIncome();
+    }, []);
 
     const getIncome = async () => {
         const user_id = sessionStorage.getItem('user_id')
@@ -52,10 +43,9 @@ const IncomePage = () => {
             }
     
             const data = await response.json();
-            console.log('Fetched incomes:', data); // Log the fetched data
             setIncomes(data); // Update the state with the fetched incomes
         } catch (error) {
-            console.error('Error fetching incomes:', error); // Handle errors appropriately
+            console.error('Error fetching incomes:', error);
         }
     };
 
