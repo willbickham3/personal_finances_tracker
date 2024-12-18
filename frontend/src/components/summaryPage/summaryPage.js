@@ -70,34 +70,47 @@ const SummaryPage = () => {
       </tr>
     }
 
-    const currentProgress = (budget) => {
-      let newProgressBarContainer = document.createElement('div')
-      newProgressBarContainer.setAttribute('class', 'progress-bar')
-
-      let newProgressBar = document.createElement('div')
-      newProgressBar.setAttribute('id', `progress-${budget.id}`)
-
-      let progress = ((Number(budget.current_amount) / Number(budget.amount)) * 100).toFixed(2)
-      newProgressBar.style.width = `${progress}%`
-      newProgressBar.style.height = '100%'
-      newProgressBar.style.borderRadius = '10px'
-      newProgressBar.style.transition = 'width 0.3s ease'
-      newProgressBar.style.backgroundColor = '#4caf50'
-      newProgressBarContainer.append(newProgressBar)
-      return newProgressBarContainer
-
-      //     height: '100%',
-            //     backgroundColor: '#4caf50',
-            //     borderRadius: '10px',
-            //     transition: 'width 0.3s ease'
+    const ProgressBar = ({ currentAmount, totalAmount}) => {
+      const progress = ((Number(currentAmount) / Number(totalAmount)) * 100)
+      console.log('Progress: ', (Number(currentAmount) / Number(totalAmount)), 'Current Amount: ', currentAmount, 'Total Amount: ', totalAmount)
+      console.log(progress)
+      let bgColor;
+      if (progress > 80) {
+        bgColor = 'red'
+      }
+      else if (progress > 50) {
+        bgColor = 'yellow'
+      }
+      else {
+        bgColor = 'green'
+      }
+      return (
+        <div className='progress-bar-container' style={{ width: '100%', backgroundColor:'white', borderRadius: '10px'}}>
+          <div className='progress-bar'
+            style={{
+              width: `${progress}`,
+              height: '100%',
+              backgroundColor: `${bgColor}`,
+              borderRadius: '10px',
+              transition: 'width 0.3s ease'
+            }}>
+          </div>
+        </div>
+      )
     }
 
-    const budgetCards = (budget) => {
-      let newCard = card(budget.category, budget.current_amount, budget.amount)
-      let progress = currentProgress(budget)
-      newCard.append(progress)
-
-      return newCard
+    const BudgetCard = ({ budget }) => {
+      console.log(budget)
+      console.log(budget.current_amount, budget.amount)
+      return (
+        <div className="budget-card">
+          <h4>{budget.category}</h4>
+          <p>
+            {budget.current_amount} / {budget.amount}
+          </p>
+          <ProgressBar currentAmount={budget.current_amount} totalAmount={budget.amount} />
+        </div>
+      )
     }
     
 
@@ -107,11 +120,11 @@ const SummaryPage = () => {
         <div className='summary-container'>
           <div className='totalIncome'>Total Income: ${totalIncome.toFixed(2)}</div>
           <div className='totalExpenses'>Total Expenses: ${totalExpenses.toFixed(2)}</div>
-          <button onClick={() => {(budgetCards(budgets[0]))}}></button>
+          <button onClick={() => {console.log('hi')}}></button>
           {budgets.map((budget) => (
-            document.querySelector('.summary-container').append(budgetCards(budget))
+            <BudgetCard key={budget.id} budget={budget} />
             // <div key={budget.id} className='progress-bar'>
-            //   <div id={`progress`} style={{
+            //   <div id={`progress`} stylffe={{
             //     width: `${((Number(budget.current_amount) / Number(budget.amount)) * 100).toFixed(2)}%`,
             //     height: '100%',
             //     backgroundColor: '#4caf50',
