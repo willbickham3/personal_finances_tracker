@@ -161,10 +161,10 @@ const IncomePage = () => {
     return (
         <>
         <NavBar />
-        <div className='container'>
-            <div className='header'>
-                    <div className='text'>Income</div>
-                    <div className='underline'></div>
+        <div className='income-container'>
+            <div className='income-header'>
+                    <div className='income-text'>Income</div>
+                    <div className='income-underline'></div>
                 </div>
                 <table className="income-table">
                     <thead>
