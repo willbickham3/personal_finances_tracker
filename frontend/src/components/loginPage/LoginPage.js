@@ -127,7 +127,7 @@ const LoginPage = () => {
                 <div className='underline'></div>
             </div>
             <div className='login-inputs'>
-                <div className='login-input' id='name' style={{display:'none'}}>
+                <div className='login-input' id='name'>
                     <img src={user_icon} alt='' />
                     <input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}/>
                 </div>
