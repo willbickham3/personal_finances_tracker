@@ -162,3 +162,48 @@ span {
         line-height: 1.2em;
     }
 }
+@media (max-width: 510px) {
+    * {
+        box-sizing: border-box;
+    }
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        width: 90%;
+        height: 70%;
+        padding: 2em;
+    }
+    .header {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .login-inputs {
+        grid-column: 1;
+        grid-row: 3;
+        font-size: 0.8em;
+        border-left: none;
+    }
+    .login-input {
+        grid-column: 1;
+        grid-row: ;
+        width: 95%;
+    }
+    .forgot-password {
+        grid-column: 1;
+        grid-row: 4;
+        font-size: 2em;
+    }
+    .submit-container {
+        grid-column: 1;
+        grid-row: 5;
+        font-size: 4em;
+    }
+    .welcome-msg {
+        grid-column: 1;
+        grid-row: 1;
+        width: 95%;
+        font-size: 2.3em;
+        line-height: 1.2em;
+        border-bottom: 4px dotted #D0D9B0;
+    }
+}
