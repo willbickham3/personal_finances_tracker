@@ -2,27 +2,6 @@
     box-sizing: border-box;
 }
 
-.text {
-    color: #3c009d;
-    font-size: 5em;
-    font-weight: 700;
-}
-
-.underline {
-    margin-top: 0;
-    width: 6%;
-    height: 2px;
-    background: #3c009d;
-    border-radius: 9px;
-}
-
-.inputs {
-    display: flex;
-    flex-direction: row;
-    gap: 2em;
-    margin-top: 3%;
-}
-
 .input {
     display: flex;
     align-items: center;
@@ -68,34 +47,6 @@ img {
     border: 1px solid #5A20CB; /*Optional: Add a custom border on focus */
     box-shadow: none;         /* Removes any extra shadow if applied */
     border-radius: 6px;
-}
-
-span {
-    color: #3c009d;
-    font-weight: 500;
-}
-
-.submit-container {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 3%;
-}
-
-.submit-container > * {
-    background: #5A20CB;
-    color: #eaeaea;
-    font-weight: 500;
-    border-radius: 8px;
-    font-size: 0.7em;
-    padding: 2%;
-    width: 6em;
-    text-align: center;
-    cursor: pointer;
-}
-
-.gray {
-    background-color: #a0a0a0;
 }
 
 .expense-item {
