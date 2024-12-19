@@ -137,3 +137,28 @@ span {
 .gray {
     background-color: #a0a0a0;
 }
+
+
+@media (max-width: 1000px) {
+    .container {
+        width: 80%;
+    }
+    .header {}
+    .login-inputs {
+        font-size: 0.8em;
+    }
+    .login-input {
+        width: 95%;
+    }
+    .forgot-password {
+        font-size: 2em;
+    }
+    .submit-container {
+        font-size: 4em;
+    }
+    .welcome-msg {
+        width: 95%;
+        font-size: 2.2em;
+        line-height: 1.2em;
+    }
+}
