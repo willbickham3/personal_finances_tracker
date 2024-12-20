@@ -19,14 +19,6 @@ img {
     width: 10%;
 }
 
-.modal-overlay {
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-.modal-overlay button {
-    font-size: 3em;
-}
 
 .input input {
     border: none;                   /* Removes the default border */
