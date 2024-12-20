@@ -198,12 +198,12 @@ const IncomePage = () => {
                     setDate('')}
                 }>Add New Income</button>
                 <PopupModal isOpen={isModalOpen} onClose={closeModal} title="Add New Income">
-                    <div className='inputs'>
-                        <div className='input'>
+                    <div className='modal-inputs'>
+                        <div className='modal-input amount'>
                             <img src={dollar_icon} alt='' />
                             <input type='number' placeholder='Amount' step={0.01} min={0} value={amount} onChange={(e) => setAmount(e.target.value)}/>
                         </div>
-                        <div className='input'>
+                        <div className='modal-input source'>
                             <img src={category_icon} alt='' />
                             <input type='text' placeholder='Source' pattern="[A-Za-z0-9]*$" value={category} onChange={(e) => {
                                 if (/^[A-Za-z0-9]*$/.test(e.target.value)) {
@@ -215,7 +215,7 @@ const IncomePage = () => {
                                 }
                                 }}/>
                         </div>
-                        <div className='input'>
+                        <div className='modal-input date'>
                             {/* <img src={calendar_icon} alt='' /> */}
                             <input type='date' placeholder='' value={date} onChange={(e) => {setDate(e.target.value)
                                 console.log(date)
