@@ -34,16 +34,16 @@ const SummaryPage = () => {
       fetchData();
   }, []);
 
-    let totalIncome = generateTotals(incomes)
-    let totalExpenses = generateTotals(expenses)
+    let totalIncome = generateTotals(incomes).toFixed(2)
+    let totalExpenses = generateTotals(expenses).toFixed(2)
 
     return (
         <>
         <NavBar />
         <div className='summary-container'>
           <h1 className='summaryHeader'>Financial Summary</h1>
-          <div className='totalIncome'>Total Income: ${totalIncome.toFixed(2)}</div>
-          <div className='totalExpenses'>Total Expenses: ${totalExpenses.toFixed(2)}</div>
+          <section className='totalIncome'>Total Income: ${totalIncome}</section>
+          <section className='totalExpenses'>Total Expenses: ${totalExpenses}</section>
           <section className='totalBudgets'>
             {budgets.map((budget) => (
               <Card key={budget.id} budget={budget} />
