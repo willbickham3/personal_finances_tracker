@@ -34,8 +34,8 @@ const SummaryPage = () => {
       fetchData();
   }, []);
 
-    let totalIncome = generateTotals(incomes).toFixed(2)
-    let totalExpenses = generateTotals(expenses).toFixed(2)
+    let totalIncome = generateTotals(incomes)
+    let totalExpenses = generateTotals(expenses)
 
     return (
         <>
@@ -61,7 +61,7 @@ function generateTotals(data) {
     totalData = data.reduce((accumulator, data) => {
         return accumulator + Number(data.amount); 
     }, 0);
-  return totalData ? totalData : 0
+  return totalData ? totalData.toFixed(2) : '0.00'
 }}
 
 export default SummaryPage
