@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 export const Card = ({ budget }) => {
     // Takes in a budget entry and creates a card with its values
     return (
@@ -12,25 +14,41 @@ export const Card = ({ budget }) => {
     </>
       )
 }
-
-const ProgressBar = ({ currentAmount, totalAmount}) => {
-    const progress = ((Number(currentAmount) / Number(totalAmount)) * 100)
-    let barColor = chooseBarColor(progress)
-
+const ProgressBar = ({ currentAmount, totalAmount }) => {
+    const [width, setWidth] = useState(0);
+    const progress = (Number(currentAmount) / Number(totalAmount)) * 100;
+    const barColor = chooseBarColor(progress);
+  
+    useEffect(() => {
+      const timeout = setTimeout(() => {
+        setWidth(progress);
+      }, 100);
+      return () => clearTimeout(timeout);
+    }, [progress]);
+  
     return (
-      <div className='progress-bar-container' style={{ width: '100%', backgroundColor:'white', borderRadius: '10px'}}>
-        <div className='progress-bar'
+      <div
+        className="progress-bar-container"
+        style={{
+          width: '100%',
+          backgroundColor: 'white',
+          borderRadius: '10px',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          className="progress-bar"
           style={{
-            width: `${progress}%`,
+            width: `${width}%`,
             height: '100%',
-            backgroundColor: `${barColor}`,
+            backgroundColor: barColor,
             borderRadius: '10px',
-            transition: 'width 0.3s ease',
-          }}>
-        </div>
+            transition: 'width 1.8s ease', // Smooth animation
+          }}
+        ></div>
       </div>
-    )
-  }
+    );
+  };
 
 function chooseBarColor(progress) {
     let bgColor;
