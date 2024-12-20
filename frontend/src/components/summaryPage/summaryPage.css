@@ -15,14 +15,14 @@ body {
 .navbar-container {
     display: flex;
     color: #73655d;
-    gap: 2rem;
+    gap: 2em;
     padding: 2%;
     justify-content: space-between;
     align-items: center;
     background-color: #d0d9b0;
     box-shadow: #ffffff;
     width: 100%;
-    height: 8rem;
+    height: 8em;
 }
 
 .nav-link {
@@ -32,13 +32,13 @@ body {
 }
 
 .logo {
-    font-size: 2rem;
+    font-size: 2em;
     font-weight: 500;
     /* min-width: 400px; */
 }
 
 .nav-item > a {
-    font-size: 1.8rem;
+    font-size: 1.8em;
 }
 
 #profile {
@@ -52,7 +52,7 @@ body {
 
 #profile > img {
     cursor: pointer;
-    width: 4rem;
+    width: 4em;
 }
 
 .summary-container {
@@ -62,7 +62,7 @@ body {
     background-color: #C5D3D9;
     width: 80%;
     height: 50%;
-    padding: 2rem;
+    padding: 2em;
     align-items: center;
     align-content: center;
     margin: auto;
@@ -71,7 +71,7 @@ body {
 }
 
 .totalIncome, .totalExpenses {
-    font-size: 3rem;
+    font-size: 3em;
     color: #73655d;
 }
 
@@ -81,22 +81,23 @@ body {
 
 .totalBudgets {
     align-self: center;
-    margin-top: 1rem;
+    margin-top: 1em;
     grid-area: 3 / 1 / auto / 3;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    flex-wrap: wrap;
     width: 100%;
+    gap: 5%;
 }
 
 .budget-summary {
-    font-size: 2rem;
+    font-size: 2em;
 }
 
 .budget-summary {
     width: 40%;
     border-collapse: collapse;
-    margin: 2rem auto;
+    margin: 2em auto;
     background: linear-gradient(180deg, #a248e2, #640f92);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
@@ -111,10 +112,9 @@ body {
     border: 1px solid #73655d;
     border-radius: 10px;
     padding: 0.5em;
-    width: 25%;
     margin-bottom: 1em;
     background-color: #d0d9b0;
-    
+    flex: 0 0 30%;
 }
 
 .budget-card h4 {
@@ -136,13 +136,13 @@ body {
 
 .budget-summary th, td {
     text-align: left;
-    padding: 0.75rem;
+    padding: 0.75em;
     border: 1px solid #ccc;
 }
 
 .budget-summary th {
     color: #d4d1d1;
-    font-size: 2.5rem;
+    font-size: 2.5em;
 }
 .budget-summary td {
     color: white;
