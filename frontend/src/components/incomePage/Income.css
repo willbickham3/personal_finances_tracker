@@ -1,3 +1,7 @@
+#root {
+    align-items: center;
+}
+
 .income-container {
     display: flex;
     flex-direction: column;
@@ -22,4 +26,24 @@
     height: 2px;
     background: #F2B84B;
     border-radius: 9px;
+}
+
+.modal-overlay {
+    display: grid;
+    width: 50%;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    left: 25%;
+    height: 30%;
+}
+
+.modal-content {
+    display: flex;
+}
+
+.modal-inputs {
+    display: flex;
 }
