@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -55,25 +56,37 @@ body {
 }
 
 .summary-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    background-color: #C5D3D9;
+    width: 80%;
+    height: 50%;
     padding: 2rem;
     align-items: center;
     align-content: center;
+    margin: auto;
+    align-self: center;
+    justify-items: center;
 }
 
-.totalIncome, .totalExpenses, .totalBudgets {
+.totalIncome, .totalExpenses {
     font-size: 3rem;
+    color: #73655d;
 }
 
-.totalIncome, .totalExpenses, .totalBudgets {
-    color: aliceblue;
+.summaryHeader {
+    grid-area: 1 / 1 / auto / 3;
 }
 
 .totalBudgets {
     align-self: center;
     margin-top: 1rem;
+    grid-area: 3 / 1 / auto / 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .budget-summary {
@@ -90,10 +103,36 @@ body {
     overflow: hidden;
     table-layout: fixed;
 }
-/* #root > div > table > thead > tr  { 
-    background-color: #4a0072;
-    color:#ffffff;
-} */
+
+.budget-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    border: 1px solid #73655d;
+    border-radius: 10px;
+    padding: 0.5em;
+    width: 25%;
+    margin-bottom: 1em;
+    background-color: #d0d9b0;
+    
+}
+
+.budget-card h4 {
+    /* row column row column */
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.budget-card p {
+    align-self: center;
+    justify-self: end;
+    font-size: 1.2em;
+    
+}
+
+.budget-card > div {
+    grid-column: 1 / 3;
+    align-self: end;
+}
 
 .budget-summary th, td {
     text-align: left;
@@ -117,13 +156,6 @@ body {
 tr:hover {
     background-color: rgba(255, 255, 255, 0.1);
     cursor: pointer;
-}
-.totalBudgets {
-    text-decoration: underline;
-}
-
-.budget-card {
-    width: 300px;
 }
 
 .progress-bar-container {
