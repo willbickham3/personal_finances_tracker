@@ -72,11 +72,12 @@ const SummaryPage = () => {
 
     const ProgressBar = ({ currentAmount, totalAmount}) => {
       const progress = ((Number(currentAmount) / Number(totalAmount)) * 100)
-      console.log('Progress: ', (Number(currentAmount) / Number(totalAmount)), 'Current Amount: ', currentAmount, 'Total Amount: ', totalAmount)
-      console.log(progress)
       let bgColor;
-      if (progress > 80) {
+      if (progress > 100) {
         bgColor = 'red'
+      }
+      if (progress > 80) {
+        bgColor = 'orange'
       }
       else if (progress > 50) {
         bgColor = 'yellow'
@@ -88,11 +89,11 @@ const SummaryPage = () => {
         <div className='progress-bar-container' style={{ width: '100%', backgroundColor:'white', borderRadius: '10px'}}>
           <div className='progress-bar'
             style={{
-              width: `${progress}`,
+              width: `${progress}%`,
               height: '100%',
               backgroundColor: `${bgColor}`,
               borderRadius: '10px',
-              transition: 'width 0.3s ease'
+              transition: 'width 0.3s ease',
             }}>
           </div>
         </div>
@@ -106,7 +107,7 @@ const SummaryPage = () => {
         <div className="budget-card">
           <h4>{budget.category}</h4>
           <p>
-            {budget.current_amount} / {budget.amount}
+            {budget.current_amount} / <b>{budget.amount}</b>
           </p>
           <ProgressBar currentAmount={budget.current_amount} totalAmount={budget.amount} />
         </div>
@@ -118,45 +119,17 @@ const SummaryPage = () => {
         <>
         <NavBar />
         <div className='summary-container'>
+          <h1 className='summaryHeader'>Financial Summary</h1>
           <div className='totalIncome'>Total Income: ${totalIncome.toFixed(2)}</div>
           <div className='totalExpenses'>Total Expenses: ${totalExpenses.toFixed(2)}</div>
-          <button onClick={() => {console.log('hi')}}></button>
-          {budgets.map((budget) => (
-            <BudgetCard key={budget.id} budget={budget} />
-            // <div key={budget.id} className='progress-bar'>
-            //   <div id={`progress`} stylffe={{
-            //     width: `${((Number(budget.current_amount) / Number(budget.amount)) * 100).toFixed(2)}%`,
-            //     height: '100%',
-            //     backgroundColor: '#4caf50',
-            //     borderRadius: '10px',
-            //     transition: 'width 0.3s ease'
-            //   }}></div>
-            // </div>
-          ))}
-          <table className="budget-summary">
-                    <thead>
-                    <th className='summaryHead' colSpan="2">Budgets</th>
-                        <tr>
-                            <th>Status</th>
-                            <th>Category</th>
-                        </tr>
-                        
-                    </thead>
-                    <tbody>
-                      {totalBudgets}
-                        {/* <tr><td>Total expense: ${totalexpense.toFixed(2)}</td></tr> */}
-                    </tbody>
-                </table>
+          <section className='totalBudgets'>
+            {budgets.map((budget) => (
+              <BudgetCard key={budget.id} budget={budget} />
+            ))}
+          </section>
         </div>
         </>
     )
-}
-
-const GetUserId = () => {
-  const user_id = sessionStorage.getItem('user_id')
-  return (
-    <div>{user_id}</div>
-  )
 }
 
 export default SummaryPage
